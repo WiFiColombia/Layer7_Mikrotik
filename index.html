@@ -51,6 +51,23 @@ twitter.com
   $(document).ready(function(){
     $('#submit').submit(function(e){
       e.preventDefault();
+      var nombre = $('#nombre').val();
+      var wan = $('#wan').val();
+      var registros = $('#registros').val().replace(/\r?\n/g,'|');
+      var content = '<p class="mt-4">Copie y pegue este código en su terminal</p><pre class="mt-3 mb-5 p-1 bg-dark text-white">';
+      content += '##Parametros globales<br>';
+      content += ':global OutInterface "'+wan+'"<br>';
+      content += '## Muestra mensaje de confirmacion<br>';
+      content += ':global Msg "Reglas de Contenido Correctamente aplicadas"<br>';
+      content += '##'+nombre+'<br>';
+      content += '/ip firewall layer7-protocol<br>';
+      content += 'add name="'+nombre+'" regexp="^.*('+registros+').*\$"<br>';
+      content += '/ip firewall filter<br>';
+      content += 'add action=drop chain=forward comment="'+nombre+'" layer7-protocol="'+nombre+'" out-interface=$OutInterface place-before=0<br>';
+      content += '##Imprime El mensaje en el log<br>';
+      content += ':log info $Msg<br>';
+      content += '</pre>';
+      $('.content').html(content);
     });
   });
 </script>
