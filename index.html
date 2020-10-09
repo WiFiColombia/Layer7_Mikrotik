@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registros L7 Mikrotik</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-12">
+        <h3 class="text-center mt-3">Registros L7 Mikrotik</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+        <form id="submit" class="row">
+          <div class="form-group col col-md-12">
+            <label for="">Ingrese el nombre de la regla</label>
+            <input type="text" id="nombre" class="form-control" placeholder="Ej: Bloqueo Redes Sociales">
+          </div>
+          <div class="form-group col col-md-12">
+            <label for="">Ingrese el nombre de su interfaz WAN</label>
+            <input type="text" id="wan" class="form-control" placeholder="Ej: ether1">
+          </div>
+          <div class="form-group col col-md-12">
+            <label for="">Ingrese las direcciones, una por línea</label>
+            <textarea class="form-control" id="registros" rows="5" style="resize:vertical" 
+            placeholder="Ej
+facebook.com
+twitter.com
+            "></textarea>
+          </div>
+          <div class="col col-md-12">
+            <button type="submit" id="enviar" class="btn btn-success btn-block">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+        <span class="content"></span>
+      </div>
+    </div>
+  </div>
+<script src="js/jquery-3.0.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#submit').submit(function(e){
+      e.preventDefault();
+    });
+  });
+</script>
+</body>
+</html>
